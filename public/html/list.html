@@ -1,0 +1,26 @@
+<div class="list-contact container" ng-controller='listContacts'>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ph. Number</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cont in allContacts " ng-if='cont.status=="active"'>
+                    <th scope="row">{{$index}}</th>
+                    <td>{{cont.firstName}}</td>
+                    <td>{{cont.lastName}}</td>
+                    <td>{{cont.email}}</td>
+                    <td>{{cont.phNumber}}</td>
+                    
+                </tr>
+
+            </tbody>
+        </table>
+		<a class="btn btn-primary" type="submit" href="#/"> Back</a>
+    </div>

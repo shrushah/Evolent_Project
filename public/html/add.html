@@ -1,0 +1,30 @@
+    <div class="add-contacts container" ng-controller="addController">
+        <form name="userForm" ng-submit="add(userForm.$valid)" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : (userForm.firstName.$error.maxlength || userForm.firstName.$error.minlength) && !userForm.firstName.$pristine }">
+                <label for="exampleFormControlInput1">First Name</label>
+                <input type="text" name='firstName' class="form-control" ng-maxlength="10" ng-minlength="2" placeholder="First Name" ng-model="contact.firstName" required>
+              
+                <p ng-show="userForm.firstName.$error.minlength" class="help-block">firstName is too short.</p>
+                <p ng-show="userForm.firstName.$error.maxlength" class="help-block">firstName is too long.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : (userForm.lastName.$error.maxlength ||  userForm.lastName.$error.minlength) && !userForm.lastName.$pristine }">
+                <label for="exampleFormControlInput1">Last Name </label>
+                <input type="text" name='lastName' class="form-control" id="" placeholder="Last Name" ng-maxlength="10" ng-minlength="2" ng-model="contact.lastName" required>
+                <p ng-show="userForm.lastName.$error.minlength" class="help-block">Last Name is too short.</p>
+                <p ng-show="userForm.lastName.$error.maxlength" class="help-block">Last Name is too long.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" name='email' class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" ng-model="contact.email" required>
+                <p ng-show="userForm.email.$invalid " class="help-block">Enter a valid email.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : !userForm.number.$pristine && (userForm.number.$error.minlength || userForm.number.$error.maxlength) }">
+                <label for="exampleFormControlInput1">Phone Number</label>
+                <input type="number" name='number' class="form-control" id="exampleFormControlInput1" ng-maxlength='10' ng-minlength='9' placeholder="123456790" ng-model="contact.phNumber" required>
+                <p ng-show=" !userForm.number.$pristine && (userForm.number.$error.minlength || userForm.number.$error.maxlength)" class="help-block">Enter a valid Phone Number.</p>
+            </div>
+            <button class="btn btn-primary" type="submit" ng-hide="editContact"> Add</button>
+            <a class="btn btn-primary" type="submit" ng-hide="editContact" href="#/"> Back</a>
+            <button class="btn btn-primary" ng-click="Save()" ng-show="editContact"> Save</button>
+        </form>
+    </div>
